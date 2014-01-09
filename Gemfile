@@ -36,6 +36,15 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :test do
+  gem 'selenium-webdriver'
+  gem 'capybara'
+end
+
+group :development do
+  gem 'rspec-rails'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
