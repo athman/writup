@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+  
 describe "Pages" do
 
   describe "Home page" do
@@ -11,7 +11,12 @@ describe "Pages" do
     
     it "should have the right title" do
       visit '/pages/home'
-      expect(page).to have_title("Writup::Home")
+      expect(page).to have_title("Writup")
+    end
+    
+    it "should not have a page specific title" do
+      visit '/pages/home'
+      expect(page).not_to have_title("Home")
     end
     
   end
