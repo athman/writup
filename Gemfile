@@ -44,6 +44,8 @@ group :test do
   gem 'capybara'
   gem 'ZenTest'
   gem 'spork-rails'
+  #gem 'redgreen', "~>1.2.2"
+  #gem 'test-unit'
 end
 
 group :development do
