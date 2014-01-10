@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 1.2'
 # Use Postgres as the application database for ActiveRecord
 gem 'pg'
 
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+
 group :production do
   gem 'rails_12factor'
 end
@@ -40,10 +43,12 @@ group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'ZenTest'
+  gem 'spork-rails'
 end
 
 group :development do
   gem 'rspec-rails'
+  gem 'rails_layout'
 end
 
 group :doc do
