@@ -2,64 +2,46 @@ require 'spec_helper'
   
 describe "Pages" do
 
+  subject { page }
+  
   describe "Home page" do
     
-    it "should have the content 'Writup'" do
-      visit '/pages/home'
-      expect(page).to have_content("Writup")
-    end
+    before { visit root_path }
     
-    it "should have the right title" do
-      visit '/pages/home'
-      expect(page).to have_title("Writup")
-    end
-    
-    it "should not have a page specific title" do
-      visit '/pages/home'
-      expect(page).not_to have_title("Home")
-    end
+    it { should have_content("Writup") }
+    it { should have_title(full_title("")) }
+    it { should_not have_title("home") }
+    it { should have_content("Welcome to Writup") }
+    it { should have_selector("a", :text => "Sign in") }
+    it { should have_selector("a", :text => "Sign up") }
     
   end
   
   describe "Help page" do
     
-    it "should have the content 'Help'" do
-      visit '/pages/help'
-      expect(page).to have_content("Help")
-    end
+    before { visit help_path }
     
-    it "should have the right title" do
-      visit '/pages/help'
-      expect(page).to have_title("Writup::Help")
-    end
-    
+    it { should have_content("Help") }
+    it { should have_title("Writup::Help") }
+ 
   end
   
   describe "About page" do
     
-    it "should have the content 'About'" do
-      visit '/pages/about'
-      expect(page).to have_content("About")
-    end
+    before { visit about_path }
     
-    it "should have the right title" do
-      visit '/pages/about'
-      expect(page).to have_title("Writup::About")
-    end
+    
+    it { should have_content("About") }
+    it { should have_title("Writup::About") }
     
   end
   
   describe "Contact page" do
     
-    it "should have the content 'Help'" do
-      visit '/pages/help'
-      expect(page).to have_content("Help")
-    end
+    before { visit help_path }
     
-    it "should have the right title" do
-      visit '/pages/contact'
-      expect(page).to have_title("Writup::Contact")
-    end
+    it { should have_content("Help") }
+    it { should have_title("Writup::Help") }
     
   end
 

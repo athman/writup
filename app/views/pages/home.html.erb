@@ -1,2 +1,10 @@
-<h1>Writup</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- A Jumbotron -->
+<div class="jumbotron">
+  <h1>Welcome to Writup </h1>
+  <p>Writup is where you express yourself to the world. You can also browse posts from other users, interact and share to the rest of the world</p>
+  <p>So dig in! I wonder what you are waiting for.</p>
+  <p>
+    <%= link_to "Sign in", "#", :class => "btn btn-lg btn-primary", :role => "button" %>
+    <p>Don't have an account? <%= link_to "Sign up", signup_path %>
+  </p>
+</div>
