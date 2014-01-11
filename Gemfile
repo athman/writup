@@ -45,6 +45,7 @@ group :test do
   gem 'ZenTest'
   gem 'spork-rails'
   gem 'autotest-fsevent'
+  gem 'factory_girl_rails', "~>4.3.0"
 end
 
 group :development do

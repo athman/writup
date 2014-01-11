@@ -1,26 +1,22 @@
-<%= form_for(@user, :html => {:class => "form-signin"}) do |t|%>
+<%= form_for @user, html: { class: "form-signin" } do |t| %>
   <h2 class="form-signin-heading">Sign up</h2>
   <%= render "shared/user_create_error_message" %>
   <% if @user.errors.include?(:first_name) %>
     <span class="label label-danger"><%= @user.errors.full_messages_for(:first_name) %></span>
   <% end %>
   <%= t.text_field :first_name, class: "form-control", placeholder: "first name" %>
-  
-  <% if @user.errors.include?(:last_name) %>
-    <span class="label label-danger"><%= @user.errors.full_messages_for(:last_name) %></span>
+  <% if @user.errors.include?(:surname) %>
+    <span class="label label-danger"><%= @user.errors.full_messages_for(:surname) %></span>
   <% end %>
-  <%= t.text_field :last_name, class: "form-control", placeholder: "last name" %>
-  
+  <%= t.text_field :surname, class: "form-control", placeholder: "last name" %>
   <% if @user.errors.include?(:email) %>
     <span class="label label-danger"><%= @user.errors.full_messages_for(:email) %></span>
   <% end %>
   <%= t.email_field :email, class: "form-control", placeholder: "email" %>
-  
   <% if @user.errors.include?(:password) %>
     <span class="label label-danger"><%= @user.errors.full_messages_for(:password) %></span>
   <% end %>
   <%= t.password_field :password, class: "form-control", placeholder: "password" %>
-  
   <% if @user.errors.include?(:password_confirmation) %>
     <span class="label label-danger"><%= @user.errors.full_messages_for(:password_confirmation) %></span>
   <% end %>

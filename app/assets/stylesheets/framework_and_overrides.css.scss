@@ -45,5 +45,26 @@ section {
   }
 
 // Changes by Athman Gude >>>>>>>>>>>>>
+.debug_dump{
+  clear: both;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.field_with_errors{
+  @extend .form-group;
+  @extend .has-error;
+}
+
+#flash_messages{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
 //------------------------------------
