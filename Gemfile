@@ -44,13 +44,13 @@ group :test do
   gem 'capybara'
   gem 'ZenTest'
   gem 'spork-rails'
-  #gem 'redgreen', "~>1.2.2"
-  #gem 'test-unit'
+  gem 'autotest-fsevent'
 end
 
 group :development do
   gem 'rspec-rails'
   gem 'rails_layout'
+  gem 'annotate'
 end
 
 group :doc do
@@ -59,7 +59,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
