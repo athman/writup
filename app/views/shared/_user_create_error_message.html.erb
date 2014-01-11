@@ -1,6 +1,6 @@
 <% if @user.errors.messages.any? %>
   <div id="error_message" class="alert alert-danger">
-    <h4><strong>Error!</strong> The user could not be created </h4>
+    <h4><strong>Sorry:</strong> The user could not be created </h4>
     <h5> See <%= pluralize(@user.errors.messages.count, "error")%> below </h5>
   </div>
 <% end %>
