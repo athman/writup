@@ -8,10 +8,13 @@
   </head>
   <body>
     <header>
-      <%= render 'layouts/navigation_not_signed_in' %>
+      <% if signed_in? %>
+        <%= render 'layouts/navigation' %>
+      <% else %>
+        <%= render 'layouts/navigation_not_signed_in' %>  
+      <% end %>
     </header>
     <main role="main">
-       <%= render 'layouts/flash_messages' %>
        <%= yield %>
     </main>
     <%= debug(params) if Rails.env.development? %>

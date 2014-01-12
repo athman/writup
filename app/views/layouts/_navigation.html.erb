@@ -12,7 +12,7 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="active"> <%= link_to "Home", root_path %></li>
-        <li> <%= link_to "Profile", "#" %> </li>
+        <li> <%= link_to "Profile", current_user %> </li>
         <li> <%= link_to "Posts", "#" %> </li>
         <li> <%= link_to "Writers", "#" %> </li>
       </ul>
@@ -22,7 +22,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Sign Out", "#" %></li>
+            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
             <li class="divider"></li>
             <li class="dropdown-header">Settings</li>
             <li> <%= link_to "Account settings", "#" %> </li>
