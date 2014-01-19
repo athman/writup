@@ -46,6 +46,8 @@ group :test do
   gem 'spork-rails'
   gem 'autotest-fsevent'
   gem 'factory_girl_rails', "~>4.3.0"
+  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 group :development do
