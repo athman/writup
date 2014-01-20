@@ -46,8 +46,10 @@ describe "UserPages" do
       describe "after saving the user" do
         
         before { click_button submit }
+        let(:user) { User.find_by(email: "alice@wonderland.com") }
         
         it { should have_title(full_title("Alice")) }
+        it { should have_link("Sign out") }
         it { should have_selector("div.alert.alert-success.alert-dismissable") }
         
       end
@@ -57,7 +59,7 @@ describe "UserPages" do
   end
   
   describe "profile page" do
-    let(:user) { create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
     before { visit user_path(user) }
     
     it { should have_content(user.first_name) }
