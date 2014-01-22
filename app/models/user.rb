@@ -10,6 +10,7 @@
 #  updated_at      :datetime
 #  password_digest :string(255)
 #  remember_me     :string(255)
+#  admin           :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

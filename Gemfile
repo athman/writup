@@ -35,6 +35,15 @@ gem 'pg'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 
+# Randomly create fake users in the system
+gem 'faker', "1.2.0"
+
+# Use will paginate for pagination
+gem 'will_paginate', "3.0.5"
+
+# Use bootstrap-will_paginate to use bootstraps pagination styles
+gem 'bootstrap-will_paginate', "0.0.10"
+
 group :production do
   gem 'rails_12factor'
 end
