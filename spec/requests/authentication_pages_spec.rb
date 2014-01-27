@@ -39,12 +39,12 @@ describe "AuthenticationPages" do
       
       let(:user) { FactoryGirl.create(:user) }
       
-      before do
-        signin user
-      end
+      before { signin user }
       
       it { should have_title user.first_name }
+      it { should have_link("Writers", href: users_path) }
       it { should have_link "Profile", href: user_path(user) }
+      it { should have_link "Profile settings", href: edit_user_path(user) }
       it { should have_link "Sign out", href: signout_path }
       it { should_not have_link "Sign in", href: signin_path }
       
@@ -97,8 +97,17 @@ describe "AuthenticationPages" do
       describe "submitting a GET request to the User#edit action" do
         
         before { get edit_user_path(wrong_user) }
+        
         specify { expect(response.body).not_to match(full_title("Edit user")) }
         specify { expect(response).to redirect_to root_url }
+        
+      end
+      
+      describe "submitting a PATCH request to the User#update action" do
+        
+        before { patch user_path(wrong_user) }
+        
+        specify { expect(response).to redirect_to(root_url) }
         
       end
       
@@ -127,7 +136,24 @@ describe "AuthenticationPages" do
           
         end
         
-        
+        describe "when signing in again" do
+          
+          before do
+            #Capybara.current_session.driver.delete signout_path
+            # Or alternatively navigate with by clicking the links directly
+            click_link "Sign out"
+            visit signin_path
+            fill_in "session_email",        with: user.email
+            fill_in "session_password",      with: user.password
+            click_button "Sign in"
+          end
+          
+          it "should render the default profile page" do
+            expect(page).to have_title(user.first_name)
+          end
+          
+        end
+                
       end
       
       describe "in the users controller" do
@@ -136,7 +162,7 @@ describe "AuthenticationPages" do
           
           before { visit users_path }
           
-          it { should have_title(full_title("Sign in")) }
+          it { should have_title("Sign in") }
           
         end
         
@@ -153,7 +179,7 @@ describe "AuthenticationPages" do
       
       describe "submittind a DELETE request to the Users#destroy action" do
         
-        before { delete users_path(user) }
+        before { delete user_path(user) }
         specify { expect(response).to redirect_to(root_url) }
         
       end
