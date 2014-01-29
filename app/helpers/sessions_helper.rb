@@ -24,6 +24,13 @@ module SessionsHelper
     user == current_user
   end
   
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Oops! You need to sign in first"
+    end
+  end
+  
   def signout
     current_user.update_attribute(:remember_me, User.encrypt(User.new_remember_me))
     self.current_user = nil

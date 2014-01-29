@@ -47,7 +47,7 @@ describe Post do
   
   describe "with content that is too short" do
     
-    before { @post.content = "a" * 140 }
+    before { @post.content = "a" * 99 }
     
     it { should_not be_valid }
     

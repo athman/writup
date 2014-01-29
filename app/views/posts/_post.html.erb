@@ -4,11 +4,13 @@
   </a>
   <div class="media-body">
     <h4 class="media-heading">Post Heading</h4>
+    <h5>Posted <%= time_ago_in_words(post.created_at) %> ago</h5>
     <div class="post_body">
       <%= post.content %>
     </div>
     <div class="post_footer">
-      Posted <%= time_ago_in_words(post.created_at) %> ago
+      
     </div>
   </div>
 </div>
+<hr />
