@@ -15,6 +15,8 @@
 
 class User < ActiveRecord::Base
   
+  has_many :posts, dependent: :destroy
+  
   before_save do
     self.email = email.downcase
     self.first_name = first_name.downcase.capitalize
