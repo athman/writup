@@ -10,6 +10,8 @@ describe "PostPages" do
   
   describe "post creation" do
     
+    before { visit root_path }
+    
     describe "with invalid info" do
       
       it "should not create a post" do

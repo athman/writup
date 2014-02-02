@@ -1,0 +1,10 @@
+<%= form_for(@post) do |f| %>
+  <%= render "shared/post_create_error_message", object: f.object %>
+  <div class="post_input_field">
+    <% if @post.errors.include?(:content) %>
+      <span class="label label-danger"><%= @post.errors.full_messages_for(:content) %></span>
+    <% end %>
+    <%= f.text_area :content, placeholder: "Compose your new post ..."%>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

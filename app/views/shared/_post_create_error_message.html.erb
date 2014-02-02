@@ -1,0 +1,7 @@
+<% if object.errors.any? %>
+  <div id="error_message" class="alert alert-danger">
+    <h4><strong>Error!</strong> Ooops! We couldn't create your post </h4>
+    <h5> See <%= pluralize(object.errors.messages.count, "error")%> below </h5>
+    <!--<%= flash[:error] %>-->
+  </div>
+<% end %>
