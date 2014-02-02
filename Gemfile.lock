@@ -40,6 +40,9 @@ GEM
     autotest-fsevent (0.2.9)
       sys-uname
     bcrypt-ruby (3.0.1)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
@@ -55,6 +58,7 @@ GEM
       xpath (~> 2.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -198,6 +202,7 @@ DEPENDENCIES
   annotate
   autotest-fsevent
   bcrypt-ruby (~> 3.0.0)
+  better_errors (= 1.1.0)
   bootstrap-sass
   bootstrap-will_paginate (= 0.0.10)
   bootswatch-rails

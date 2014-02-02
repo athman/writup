@@ -63,6 +63,7 @@ group :development do
   gem 'rspec-rails'
   gem 'rails_layout'
   gem 'annotate'
+  gem 'better_errors', "1.1.0"
 end
 
 group :doc do
