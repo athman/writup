@@ -43,6 +43,24 @@ describe "Pages" do
     it { should have_selector("a", text: "Sign in") }
     it { should have_selector("a", text: "Sign up") }
     
+    describe "for signed in users" do
+      
+      let(:user) { FactoryGirl.create(:user) }
+      
+      before do
+        FactoryGirl.create(:post, user: user)
+        FactoryGirl.create(:post, user: user)
+        signin user
+        visit root_path
+      end 
+      
+      it "should render the user's feed" do
+        user.feed.each do |post|
+          expect(page).to have_selector("div##{post.id}", text: post.content)
+      end
+      
+    end
+    
   end
   
   describe "Help page" do
@@ -53,7 +71,6 @@ describe "Pages" do
     let(:page_title) { "Help" }
     
     it_should_behave_like "all static pages"
- 
   end
   
   describe "About page" do
@@ -77,5 +94,7 @@ describe "Pages" do
     it_should_behave_like "all static pages"
     
   end
-
+  
+end
+  
 end

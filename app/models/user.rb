@@ -40,6 +40,11 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
   
+  def feed
+    Post.where("user_id = ?", id)
+    #posts
+  end
+  
   private
     
     def create_remember_me

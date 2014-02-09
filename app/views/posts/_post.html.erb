@@ -4,13 +4,14 @@
   </a>
   <div class="media-body">
     <h4 class="media-heading">Post Heading</h4>
-    <h5>Posted <%= time_ago_in_words(post.created_at) %> ago</h5>
+    <h5>Posted <%= time_ago_in_words(post.created_at) %></h5>
     <div class="post_body">
       <%= post.content %>
     </div>
     <div class="post_footer">
-      
+      <% if current_user?(post.user) %>
+        <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete this post?" }, title: post.content, class: "btn btn-default btn-sm" %>
+      <% end %>
     </div>
   </div>
 </div>
-<hr />
