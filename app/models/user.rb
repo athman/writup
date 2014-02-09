@@ -16,6 +16,7 @@
 class User < ActiveRecord::Base
   
   has_many :posts, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   
   before_save do
     self.email = email.downcase
