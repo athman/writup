@@ -30,4 +30,20 @@ describe Relationship do
     
   end
   
+  describe "when followed is not present" do
+    
+    before { relationship.followed_id = nil }
+    
+    it { should_not be_valid }
+    
+  end
+  
+  describe "when follower is not available" do
+    
+    before { relationship.follower_id = nil }
+    
+    it { should_not be_valid }
+    
+  end
+  
 end
