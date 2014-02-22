@@ -1,7 +1,6 @@
 <% provide(:title, @user.first_name) %>
 <%= render 'layouts/flash_messages' %>
 <%= render 'layouts/profile_header' %>
-
 <div class="posts_holder">
   <% if @user.posts.any? %>
       <h3><%= pluralize(@user.posts.count, "Post") %></h3>

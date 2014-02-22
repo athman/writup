@@ -1,9 +1,10 @@
 <% if signed_in? %>
   <div class="row">
     <div class="span4">
-      <div>
-        <%= render "layouts/post_form" %>
-      </div>
+      <%= render "layouts/post_form" %>
+    </div>
+    <div class="span4">
+      <%= render "shared/stats" %>
     </div>
     <div class="span8">
       <%= render "shared/feed" %>
