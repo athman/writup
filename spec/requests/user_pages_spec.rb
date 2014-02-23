@@ -119,6 +119,7 @@ describe "UserPages" do
   end
   
   describe "profile page" do
+    
     let(:user) { FactoryGirl.create(:user) }
     let!(:p1) { FactoryGirl.create(:post, user: user, content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi lacus, accumsan ut magna at, eleifend auctor arcu. Mauris varius ipsum eget suscipit ultricies. Pellentesque felis quam, sagittis quis elit nec, commodo facilisis velit. Nam vitae faucibus ipsum. Nullam ut dolor tincidunt, sodales mi sed, cursus elit. Nunc convallis purus tempor lorem tristique faucibus. Nam arcu magna, pellentesque in risus sed, laoreet iaculis diam. Proin hendrerit, eros sit amet tristique semper, urna lectus blandit lorem, quis venenatis nisi neque non ante. Proin nec molestie elit. Mauris tristique tristique nisl ac pellentesque. In vel metus tortor. Quisque quis commodo mi.") }
     let!(:p2) { FactoryGirl.create(:post, user: user, content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi lacus, accumsan ut magna at, eleifend auctor arcu. Mauris varius ipsum eget suscipit ultricies. Pellentesque felis quam, sagittis quis elit nec, commodo facilisis velit. Nam vitae faucibus ipsum. Nullam ut dolor tincidunt, sodales mi sed, cursus elit. Nunc convallis purus tempor lorem tristique faucibus. Nam arcu magna, pellentesque in risus sed, laoreet iaculis diam. Proin hendrerit, eros sit amet tristique semper, urna lectus blandit lorem, quis venenatis nisi neque non ante. Proin nec molestie elit. Mauris tristique tristique nisl ac pellentesque. In vel metus tortor. Quisque quis commodo mi.") }
@@ -133,6 +134,69 @@ describe "UserPages" do
       it { should have_content(p1.content) }
       it { should have_content(p2.content) }
       it { should have_content(user.posts.count) }
+      
+    end
+    
+    describe "follow/ unfollow buttons" do
+      
+      let(:other_user) { FactoryGirl.create(:user) }
+      
+      before { signin user }
+      
+      describe "following a user" do
+        
+        before { visit user_path(other_user) }
+        
+        it "should increment the followed user count" do
+          expect do
+            click_button "Follow"
+          end.to change(user.followed_users, :count).by(1)
+        end
+        
+        it "should increment the other users followers count" do
+          expect do
+            click_button "Follow"
+          end.to change(other_user.followers, :count).by(1)
+        end
+        
+        describe "toggling the button" do
+          
+          before { click_button "Follow" }
+          
+          it { should have_xpath("//button/span[@class='glyphicon glyphicon-minus']") }
+          
+        end
+        
+      end
+      
+      describe "Unfollowing a user" do
+        
+        before do
+          user.follow!(other_user)
+          visit user_path(other_user)
+        end
+        
+        it "should decrement the followed user count" do
+          expect do
+            click_button "Unfollow"
+          end.to change(user.followed_users, :count).by(-1)
+        end
+        
+        it "should decrement the other user's followers count" do
+          expect do
+            click_button "Unfollow"
+          end.to change(other_user.followers, :count).by(-1)
+        end
+        
+        describe "toggling the button" do
+          
+          before { click_button "Unfollow" }
+          
+          it { should have_xpath("//button/span[@class='glyphicon glyphicon-plus']") }
+          
+        end
+        
+      end
       
     end
     
