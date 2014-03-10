@@ -211,6 +211,29 @@ describe User do
       
     end
     
+    describe "status" do
+      
+      let(:unfollowed_post) do
+        FactoryGirl.create(:post, user: FactoryGirl.create(:user))
+      end
+      
+      let(:followed_user) { FactoryGirl.create(:user) }
+      
+      before do
+        @user.follow!(followed_user)
+        3.times { followed_user.posts.create!(content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mi lacus, accumsan ut magna at, eleifend auctor arcu. Mauris varius ipsum eget suscipit ultricies. Pellentesque felis quam, sagittis quis elit nec, commodo facilisis velit. Nam vitae faucibus ipsum. Nullam ut dolor tincidunt, sodales mi sed, cursus elit. Nunc convallis purus tempor lorem tristique faucibus. Nam arcu magna, pellentesque in risus sed, laoreet iaculis diam. Proin hendrerit, eros sit amet tristique semper, urna lectus blandit lorem, quis venenatis nisi neque non ante. Proin nec molestie elit. Mauris tristique tristique nisl ac pellentesque. In vel metus tortor. Quisque quis commodo mi.") }
+      end
+      
+      its(:feed) { should include(newer_post) }
+      its(:feed) { should include(older_post) }
+      its(:feed) { should_not include(unfollowed_post) }
+      its(:feed) do
+        followed_user.posts.each do |post|
+          should include(post)
+      end
+      
+    end
+    
   end
   
   describe "following" do
@@ -245,4 +268,4 @@ describe User do
   end
   
 end
-
+end

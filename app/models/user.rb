@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
   
+  def feed
+    Post.from_users_followed_by(self)
+  end
+  
   private
     
     def create_remember_me
