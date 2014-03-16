@@ -7,12 +7,14 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  content    :text
+#  title      :string(255)
 #
 
 class Post < ActiveRecord::Base
   
   belongs_to :user
   default_scope -> { order("created_at DESC") }
+  validates :title, presence: true
   validates :content, presence: true, length: { minimum: 100 }
   validates :user_id, presence: true
   

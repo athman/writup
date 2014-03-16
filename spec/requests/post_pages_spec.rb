@@ -30,9 +30,12 @@ describe "PostPages" do
     
     describe "with valid information" do
       
-      before { fill_in "post_content", with: Faker::Lorem.paragraph(100) }
+      before do
+        fill_in "post_title", with: "Lorem Ipsum Dolor Sit Amet"
+        fill_in "post_content", with: Faker::Lorem.paragraph(100)
+      end
       
-      it "should create a micropost" do
+      it "should create a post" do
         expect { click_button "Post" }.to change(Post, :count).by(1)
       end
       

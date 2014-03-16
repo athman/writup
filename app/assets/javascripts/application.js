@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+//= require bootstrap-wysihtml5/b3
+//= require bootstrap-wysihtml5/locales
+
+
+$(document).on('page:load', function(){
+  window['rangy'].initialized = false
+});

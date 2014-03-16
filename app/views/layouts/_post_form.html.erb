@@ -4,11 +4,22 @@
     <%= form_for(@post) do |f| %>
       <%= render "shared/post_create_error_message", object: f.object %>
       <div class="post_input_field">
+        <% if @post.errors.include?(:title) %>
+          <span class="label label-danger"><% @post.errors.full_messages_for(:title) %></span>
+        <% end %>
+        <%= f.text_field :title, placeholder: "title of your post", class: "wysihtml5 form-control form-control-margined" %>
         <% if @post.errors.include?(:content) %>
           <span class="label label-danger"><%= @post.errors.full_messages_for(:content) %></span>
         <% end %>
-        <%= f.text_area :content, rows: 10, cols: 75, placeholder: "Compose your new post ..."%>
+        <%= f.text_area :content, class: "wysihtml5 form-control form-control-margined form-control-heightened", style: "display: block; height:300px; width: 100%; padding: 7px; border:1px solid rgb(204, 204, 204); border-radius: 0px; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset; transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;", placeholder: "Compose your new post ..."%>
       </div>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('.wysihtml5').each(function(i, elem) {
+            $(elem).wysihtml5();
+          });
+        });
+      </script>
       <%= f.submit "Post", class: "btn btn-primary" %>
     <% end %>
   </div>

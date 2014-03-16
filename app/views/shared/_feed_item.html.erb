@@ -2,12 +2,12 @@
   <%= link_to gravatar_for(feed_item.user, size: 50, class: "media-object"), feed_item.user, class: "pull-left" %>
   <div class="media-body post">
     <div class="post_header panel">
-      <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+      <h3><%= feed_item.title.html_safe %></h3>
       <span><strong>By: </strong><%= link_to feed_item.user.first_name, feed_item.user %></span>
       <span><strong>Posted: </strong><%= time_ago_in_words(feed_item.created_at) %> <%= "#{ "ago" }" %> </span>
     </div>
     <div class="post_body">
-      <%= feed_item.content %>
+      <%= feed_item.content.html_safe %>
     </div>
     <div class="post_footer">
       <% if current_user?feed_item.user %>

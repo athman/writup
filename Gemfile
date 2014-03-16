@@ -75,6 +75,10 @@ end
 # Use ActiveModel has_secure_password
  gem 'bcrypt-ruby', '~> 3.0.0'
 
+#Use bootstrap-wysihtml5-rails for wysiwyg
+  gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails',
+                              :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
