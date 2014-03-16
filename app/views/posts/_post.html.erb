@@ -3,10 +3,10 @@
     <img class="media-object" src="..." alt="...">
   </a>
   <div class="media-body">
-    <h4 class="media-heading">Post Heading</h4>
-    <h5>Posted <%= time_ago_in_words(post.created_at) %></h5>
+    <h4 class="media-heading"><%= post.title.html_safe %></h4>
+    <h5>Posted <%= time_ago_in_words(post.created_at) %> <%= "#{ "ago" }" %></h5>
     <div class="post_body">
-      <%= post.content %>
+      <%= post.content.html_safe %>
     </div>
     <div class="post_footer">
       <% if current_user?(post.user) %>
