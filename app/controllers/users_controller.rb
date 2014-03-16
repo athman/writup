@@ -58,7 +58,6 @@ class UsersController < ApplicationController
   end
   
   def followers
-    @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render "show_follow"
@@ -69,7 +68,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :surname, :email, :password, :password_confirmation)
     end
-    
     
     # Before filters
     
