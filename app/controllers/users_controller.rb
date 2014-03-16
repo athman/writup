@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    #@user = User.find(params[:id])
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Your profile was updated successfully"
       redirect_to @user
@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   end
   
   def followers
+    @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render "show_follow"
