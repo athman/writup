@@ -1,12 +1,12 @@
 <div class="media">
   <a class="pull-left" href="#">
-    <img class="media-object" src="..." alt="...">
+    <img class="media-object" src="" alt="">
   </a>
   <div class="media-body">
-    <h3 class="media-heading"><%= link_to post.title, post %></h3>
+    <h3 class="media-heading"><%= link_to post.title.html_safe, post %></h3>
     <h5>Posted <%= time_ago_in_words(post.created_at) %> <%= "#{ "ago" }" %></h5>
     <div class="post_body">
-      <%= post.content %>
+      <%= "#{ post.content[0, 600].html_safe }" "#{ " ..." }" %>
     </div>
     <div class="post_footer">
       <% if current_user?(post.user) %>

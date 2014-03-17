@@ -131,8 +131,8 @@ describe "UserPages" do
     
     describe "posts" do
       
-      it { should have_content(p1.content) }
-      it { should have_content(p2.content) }
+      it { should have_content(p1.content[0, 600]) }
+      it { should have_content(p2.content[0, 600]) }
       it { should have_content(user.posts.count) }
       
     end
