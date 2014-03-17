@@ -16,6 +16,10 @@
     <span class="label label-danger"><%= @user.errors.full_messages_for(:email) %></span>
   <% end %>
   <%= f.email_field :email, class: "form-control", placeholder: "email" %>
+  <% if @user.errors.include?(:about) %>
+    <span class="label label-danger"><%= @user.errors.full_messages_for(:about) %></span>
+  <% end %>
+  <%= f.text_area :about, class: "form-control", style: "display: block; height:300px; width: 100%; padding: 7px; border:1px solid rgb(204, 204, 204); border-radius: 0px; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset; transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;", placeholder: "something about you" %>
   <% if @user.errors.include?(:password) %>
     <span class="label label-danger"><%= @user.errors.full_messages_for(:password) %></span>
   <% end %>

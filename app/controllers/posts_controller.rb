@@ -15,6 +15,10 @@ class PostsController < ApplicationController
       render 'pages/home'
     end
   end
+
+  def show
+    @post = Post.find(params[:id])
+  end
   
   def destroy
     @post.destroy

@@ -13,6 +13,10 @@
     <span class="label label-danger"><%= @user.errors.full_messages_for(:email) %></span>
   <% end %>
   <%= t.email_field :email, class: "form-control", placeholder: "email" %>
+  <% if @user.errors.include?(:about) %>
+    <span class="label label-danger"><%= @user.errors.full_messages_for(:about) %></span>
+  <% end %>
+  <%= t.text_area :about, class: "form-control", style: "display: block; height:300px; width: 100%; padding: 7px; border:1px solid rgb(204, 204, 204); border-radius: 0px; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset; transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;", placeholder: "something about you" %>
   <% if @user.errors.include?(:password) %>
     <span class="label label-danger"><%= @user.errors.full_messages_for(:password) %></span>
   <% end %>
@@ -21,7 +25,6 @@
     <span class="label label-danger"><%= @user.errors.full_messages_for(:password_confirmation) %></span>
   <% end %>
   <%= t.password_field :password_confirmation, class: "form-control", placeholder: "confirm password" %>
-  
   <%= t.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
   <h5>Already have an account? <%= link_to "Sign in", signin_path %></h5>
 <% end %>

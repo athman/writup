@@ -1,0 +1,20 @@
+<% provide(:title, @post.title) %>
+<%= render 'layouts/flash_messages' %>
+<div class="media" id="<%= @post.id %>">
+  <%= link_to gravatar_for(@post.user, size: 50, class: "media-object"), @post.user, class: "pull-left" %>
+  <div class="media-body post">
+    <div class="post_header panel">
+      <h3><%= link_to @post.title.html_safe, @post %></h3>
+      <span><strong>By: </strong><%= link_to @post.user.first_name, @post.user %></span>
+      <span><strong>Posted: </strong><%= time_ago_in_words(@post.created_at) %> <%= "#{ "ago" }" %> </span>
+    </div>
+    <div class="post_body">
+      <%= @post.content.html_safe %>
+    </div>
+    <div class="post_footer">
+      <% if current_user?@post.user %>
+        <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure you want to delete this post" },title: @post.content, class: "btn btn-default btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+</div>
