@@ -7,7 +7,7 @@
       <span><strong>Posted: </strong><%= time_ago_in_words(feed_item.created_at) %> <%= "#{ "ago" }" %> </span>
     </div>
     <div class="post_body">
-      <%= feed_item.content.html_safe %>
+      <%= feed_item.content %>
     </div>
     <div class="post_footer">
       <% if current_user?feed_item.user %>
